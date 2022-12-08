@@ -29,4 +29,4 @@ npm start / yarn start
 
 <figure><img src="./explorer/src/assets/img/demo1.png" alt="demo1" style="width:100%"><figcaption align = "center"><b>Fig.1 - Home Page of Social Media Block Explorer</b></figcaption></figure>
 
-<figure><img src="./explorer/src/assets/img/demo2.png" alt="demo2" style="width:100%"><figcaption align = "center"><b>Fig.1 - Transaction page showing comments and upvote</b></figcaption></figure>
+<figure><img src="./explorer/src/assets/img/demo2.png" alt="demo2" style="width:100%"><figcaption align = "center"><b>Fig.2 - Transaction page showing comments and upvote</b></figcaption></figure>

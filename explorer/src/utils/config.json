@@ -1,4 +1,0 @@
-{
-  "MAINNET_URL": "process.env.REACT_APP_MAINNET_URL",
-  "GORLI": "process.env.REACT_APP_GOERLI_URL"
-}

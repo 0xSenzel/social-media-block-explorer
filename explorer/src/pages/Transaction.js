@@ -36,86 +36,110 @@ export default function Transaction() {
   //const [upvoteAddress, setUpvoteAddress] = useState("");
   const [msg, setMsg] = useState([]);
   const contractAddress = "0xAD384C5121896eB0E729A679Bc6df1B4FC58D84a";
-  
+
   function handleClick() {
     history.push("/");
   }
 
   const getComments = async () => {
-    try{
-      const {ethereum} = window;
-      if(ethereum) {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
         const { ethereum } = window;
         const provider = new ethers.providers.Web3Provider(ethereum);
-        const commentDAO = new ethers.Contract(contractAddress, contractABI, provider);
-        
-        console.log("searchHash:",searchHash); 
+        const commentDAO = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          provider
+        );
+
+        console.log("searchHash:", searchHash);
         console.log("contract address:", commentDAO.address);
 
-        const allComments = await commentDAO.getCommentsByTxHash(searchHash); 
-        console.log("Comments:",allComments);
+        const allComments = await commentDAO.getCommentsByTxHash(searchHash);
+        console.log("Comments:", allComments);
         setMsg(allComments);
       } else {
-        console.log("Ethereum not detected")
-      }
-    } catch (error) {
-      console.log(error)
-  }
-  } 
-
-  const writeComments = async () => {
-    try{
-      const {ethereum} = window;
-      if(ethereum) {
-        await ethereum.enable();
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const commentDAO = new ethers.Contract(contractAddress, contractABI, signer);
-        const commentTxn = await commentDAO.addCommentByTxHash(searchHash, comments,{gasLimit:300000});
-        console.log("Mining...", commentTxn.hash)
-
-        await commentTxn.wait();
-        console.log("Mined -- ", commentTxn.hash);
-      } else {
-        console.log("Ethereum not detected")
-      }
-      
-    } catch (error) {
-      console.log(error)
-  }   
-  } 
-
-  const addLikes = async (addr) => {
-    try{
-      const {ethereum} = window;
-      if(ethereum) {
-        await ethereum.enable();
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const commentDAO = new ethers.Contract(contractAddress, contractABI, signer);
-        // await commentDAO.addLikeByTxHashAuthor(searchHash, upvoteAddress);
-        const likeTxn = await commentDAO.addLikeByTxHashAuthor(searchHash, addr);
-        console.log("Mining...", likeTxn.hash)
-
-        await likeTxn.wait();
-        console.log("Mined -- ", likeTxn.hash);
-      } else {
-        console.log("Ethereum not detected")
+        console.log("Ethereum not detected");
       }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+
+  const writeComments = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        await ethereum.enable();
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const commentDAO = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+        const commentTxn = await commentDAO.addCommentByTxHash(
+          searchHash,
+          comments,
+          { gasLimit: 300000 }
+        );
+        console.log("Mining...", commentTxn.hash);
+
+        await commentTxn.wait();
+        console.log("Mined -- ", commentTxn.hash);
+      } else {
+        console.log("Ethereum not detected");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addLikes = async (addr) => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        await ethereum.enable();
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const commentDAO = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+        // await commentDAO.addLikeByTxHashAuthor(searchHash, upvoteAddress);
+        const likeTxn = await commentDAO.addLikeByTxHashAuthor(
+          searchHash,
+          addr
+        );
+        console.log("Mining...", likeTxn.hash);
+
+        await likeTxn.wait();
+        console.log("Mined -- ", likeTxn.hash);
+      } else {
+        console.log("Ethereum not detected");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const renderComments = (msg) => {
     if (msg != null) {
-      return msg.map(msg => {
+      return msg.map((msg) => {
         return (
-          <div key={msg.id}> 
-            <p><i>Author:</i> {msg.author}</p>
-            <p><i>Content:</i> <b>{msg.content}</b></p>
-            <p><i>Likes:</i> {msg.likes.length}</p>
-            {<button onClick={() => addLikes(msg.author)} >Upvote</button>}
+          <div key={msg.id}>
+            <p>
+              <i>Author:</i> {msg.author}
+            </p>
+            <p>
+              <i>Content:</i> <b>{msg.content}</b>
+            </p>
+            <p>
+              <i>Likes:</i> {msg.likes.length}
+            </p>
+            {<button onClick={() => addLikes(msg.author)}>Upvote</button>}
             <p>_____________________________________________</p>
           </div>
         );
@@ -157,7 +181,19 @@ export default function Transaction() {
         <br />
         <b>Block Number</b>: {blockNumber}
         <br />
-        <b>Data</b>:<div><a style={{width: 600, height: 100,overflow: 'scroll', display: 'block'}}>{data}</a></div>
+        <b>Data</b>:
+        <div>
+          <a
+            style={{
+              width: 600,
+              height: 100,
+              overflow: "scroll",
+              display: "block",
+            }}
+          >
+            {data}
+          </a>
+        </div>
         <br />
         <b>From</b>: {from}
         <br />
@@ -172,13 +208,18 @@ export default function Transaction() {
         <b>To</b>: {to}
         <br />
         <b>Commentary</b>: <p>{renderComments(msg)}</p>
-        <br/>
-        <input className="commentBox"
-        placeholder="Enter commentary here..."
-        onChange={(e) => setComments(e.target.value)}
+        <br />
+        <input
+          className="commentBox"
+          placeholder="Enter commentary here..."
+          onChange={(e) => setComments(e.target.value)}
         ></input>
-        <button className="comment" onClick={writeComments} >Comment</button>
-        <button className="comment" onClick={getComments} >Update</button>
+        <button className="comment" onClick={writeComments}>
+          Comment
+        </button>
+        <button className="comment" onClick={getComments}>
+          Update
+        </button>
       </div>
       <br />
       <button className="go-home-button" type="button" onClick={handleClick}>

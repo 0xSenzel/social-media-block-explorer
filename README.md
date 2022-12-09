@@ -20,7 +20,7 @@ To install required dependencies:
 npm install / yarn install
 ```
 
-Insert your respective Mainnet & Goerli HTTP API URL in [this](./explorer/src/utils/config.json) file by replacing `REACT_APP_MAINNET_URL` and `REACT_APP_GOERLI_URL` respectively.
+Insert your respective Mainnet & Goerli HTTP API URL in [this](./explorer/src/utils/config.js) file by replacing `REACT_APP_MAINNET_URL` and `REACT_APP_GOERLI_URL` respectively.
 
 To start the project locally:
 

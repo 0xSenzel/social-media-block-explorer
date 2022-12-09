@@ -44,4 +44,4 @@ npm start / yarn start
 
 <br/>
 
-To test our website, visit [this link](https://social-media-block-explorer.vercel.app/). Feel free to choose Goerli > transaction and enter transaction hash `0x91c2d437cfe2058bac7e9f767b947751407acd9f409d8bccb62e8c3e9b074a10` which is the transaction hash we used to demo our product during presentation.
+To test our website, visit [this link](https://social-media-block-explorer.vercel.app/). Feel free to look at an example by choosing Goerli > transaction and enter transaction hash `0x91c2d437cfe2058bac7e9f767b947751407acd9f409d8bccb62e8c3e9b074a10` which is the transaction hash we used to demo our product during presentation.

@@ -31,8 +31,11 @@ npm start / yarn start
 # Project Demo
 
 <figure><img src="./explorer/src/assets/img/demo1.png" alt="demo1" style="width:100%"><figcaption align = "center"><b>Fig.1 - Home Page of Social Media Block Explorer</b></figcaption></figure>
+
 <br/>
+
 <figure><img src="./explorer/src/assets/img/demo2.png" alt="demo2" style="width:100%"><figcaption align = "center"><b>Fig.2 - Transaction page showing comments and upvote</b></figcaption></figure>
 
 <br/>
+
 To test our website, visit [this link](https://social-media-block-explorer.vercel.app/). Feel free to choose Goerli > transaction and enter transaction hash `0x91c2d437cfe2058bac7e9f767b947751407acd9f409d8bccb62e8c3e9b074a10` which is the transaction hash we used to demo our product during presentation.
